@@ -4,4 +4,16 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-        main.cpp
+        bilete.cpp \
+        functii.cpp \
+        main.cpp \
+        rand.cpp \
+        salacinema.cpp \
+        scaun.cpp
+
+HEADERS += \
+    bilete.h \
+    functii.h \
+    rand.h \
+    salacinema.h \
+    scaun.h
