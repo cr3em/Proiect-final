@@ -1,18 +1,18 @@
 #ifndef SCAUN_H
 #define SCAUN_H
 #include <iostream>
-#include "bilete.h"
-
 
 class Scaun
 {
 public:
     Scaun();
-    bool Afisare();
+    // getter
+    unsigned short getScaun() {return _nrLoc;}
+    // setter
+    void setScaun(unsigned short _set);
 
 private:
-    unsigned short _nrLoc;
-    Bilete _tipBilet;
+    unsigned short _nrLoc = 0;
 };
 
 #endif // SCAUN_H

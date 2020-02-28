@@ -6,10 +6,11 @@ class SalaCinema
 {
 public:
     SalaCinema();
-    void AfisareSala();
+
+
 private:
-    std::vector<Rand> _listaRanduri[20];
-    unsigned short _nrRand;
+    unsigned short _nrRanduri = 20;
+    std::vector<Rand> _listaRanduri;
 };
 
 #endif // SALACINEMA_H

@@ -2,10 +2,6 @@
 
 SalaCinema::SalaCinema()
 {
-
+    // ctor
 }
 
-void SalaCinema::AfisareSala()
-{
-
-}

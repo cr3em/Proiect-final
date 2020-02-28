@@ -3,6 +3,5 @@
 #include <iostream>
 
 void Meniu();
-void ModificaPret();
 
 #endif // FUNCTII_H

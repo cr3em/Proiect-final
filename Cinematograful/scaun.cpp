@@ -2,16 +2,10 @@
 
 Scaun::Scaun()
 {
-
+    // ctor
 }
 
-bool Scaun::Afisare()
+void Scaun::setScaun(unsigned short _set)
 {
-    switch (_tip) {
-    case liber: std::cout << "L "; return true; break;
-    case intreg: std::cout << "PI "; return false; break;
-    case intreg3D: std::cout << "PI3D ";return false; break;
-    case redus: std::cout << "PR "; return false; break;
-    case redus3D: std::cout<< "PR3D "; return false; break;
-    }
+    _nrLoc = _set;
 }
