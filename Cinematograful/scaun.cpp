@@ -1,11 +1,18 @@
 #include "scaun.h"
 
-Scaun::Scaun()
+Scaun::Scaun() : _loc(0) {} // ctor
+
+Scaun::~Scaun()
 {
-    // ctor
+    // dtor
 }
 
 void Scaun::setScaun(unsigned short _set)
 {
-    _nrLoc = _set;
+    _loc = _set;
+}
+
+void Scaun::Afiseaza()
+{
+    std::cout << _loc << " ";
 }

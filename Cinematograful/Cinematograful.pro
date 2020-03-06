@@ -5,7 +5,6 @@ CONFIG -= qt
 
 SOURCES += \
         bilete.cpp \
-        functii.cpp \
         main.cpp \
         rand.cpp \
         salacinema.cpp \
@@ -13,7 +12,6 @@ SOURCES += \
 
 HEADERS += \
     bilete.h \
-    functii.h \
     rand.h \
     salacinema.h \
     scaun.h

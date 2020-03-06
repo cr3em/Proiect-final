@@ -6,6 +6,7 @@ class Bilete
 {
 public:
     Bilete();
+    ~Bilete();
     // getter
     unsigned short getIntreg() {return _pretIntreg;}
     unsigned short getIntreg3d() {return _pretIntreg3d;}

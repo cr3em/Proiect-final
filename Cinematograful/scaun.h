@@ -6,13 +6,16 @@ class Scaun
 {
 public:
     Scaun();
+    ~Scaun();
     // getter
-    unsigned short getScaun() {return _nrLoc;}
+    unsigned short getScaun() {return _loc;}
     // setter
     void setScaun(unsigned short _set);
+    void Afiseaza();
 
 private:
-    unsigned short _nrLoc = 0;
+    unsigned short _loc;
+
 };
 
 #endif // SCAUN_H
