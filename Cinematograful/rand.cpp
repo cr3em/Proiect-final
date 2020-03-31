@@ -22,17 +22,17 @@ void Rand::Afiseaza()
     std::cout << std::endl;
 }
 
-void Rand::SelectScaun(short _nrBilete, short _nrLoc, short _pret)
+void Rand::SelectScaun(short _nrBilete, short _nrLoc, short _bilet)
 {
     for (int i = 0; i < _nrBilete; i++)
     {
-        if (_pret == 1)
+        if (_bilet == 1)
             _listaScaune[_nrLoc++].setScaun(1);
-        else if (_pret == 2)
+        else if (_bilet == 2)
             _listaScaune[_nrLoc++].setScaun(2);
-        else if (_pret == 3)
+        else if (_bilet == 3)
             _listaScaune[_nrLoc++].setScaun(3);
-        else if (_pret == 4)
+        else if (_bilet == 4)
             _listaScaune[_nrLoc++].setScaun(4);
     }
     std::cout << std::endl;
@@ -78,7 +78,9 @@ void Rand::ReturBilete(short _returBani, short _nrLoc, short _nrBilete)
             _temp++;
         }
     }
-    std::cout << "Bani de returnat " << _returBani;
+    std::cout << "Bani de returnat " << _returBani << std::endl;
+    system("pause");
+    system("cls");
 }
 
 void Rand::VerificaScaun(short &x)

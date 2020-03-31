@@ -64,11 +64,12 @@ void SalaCinema::VindeBilete()
         std::cout << "Introduceti numarul de bilete dorite: ";
         std::cin >> _nrBilete;
 
-        if (_nrBilete > _locDisponibil) {
+        if(_nrBilete > _locDisponibil) {
             char _raspuns;
             std::cout << "Mai avem doar " << _locDisponibil << " locuri libere\n";
             std::cout << "Continuati? (d/n)\n";
             std::cin >> _raspuns;
+            system("cls");
             if(_raspuns == 'd')
                 continue;
             else
@@ -76,15 +77,15 @@ void SalaCinema::VindeBilete()
         }
 
         system("cls");
-        short selRand, selLoc, tipBilet = 0;
+        short selRand, _selLoc;
         std::cout << "Introduceti randul dorit: ";
         std::cin >> selRand;
 
         system("CLS");
         std::cout << "Introduceti locul dorit: ";
-        std::cin >> selLoc;
+        std::cin >> _selLoc;
 
-        _listaRanduri[selRand].ScaunOcupat(_nrBilete, selLoc);
+        _listaRanduri[selRand].ScaunOcupat(_nrBilete, _selLoc);
 
         system("cls");
         std::cout << "Precizati categoria biletelor\n";
@@ -122,20 +123,18 @@ void SalaCinema::VindeBilete()
         case 0:
             break;
         }
-
-        _listaRanduri[selRand].SelectScaun(_nrBilete, selLoc, tipBilet);
+        system("pause");
+        _listaRanduri[selRand].SelectScaun(_nrBilete, _selLoc, _optPret);
 
         opt = 0;
     }
-
-
 }
 
 void SalaCinema::ReturneazaBilete()
 {
     system("cls");
 
-    short _nrRand, _nrLoc, _nrBilete;
+    short _nrRand, _nrLoc, _nrBilete, _returBani = 0;
 
     std::cout << "Introduceti randul: ";
     std::cin >> _nrRand;
@@ -144,21 +143,25 @@ void SalaCinema::ReturneazaBilete()
         std::cout << "Rand incorect, introduceti din nou: ";
         std::cin >> _nrRand;
     }
+    system("cls");
     std::cout << "Introduceti numarul de bilete returnate: ";
     std::cin >> _nrBilete;
+    system("cls");
     std::cout << "Introduceti numarul primului loc: ";
     std::cin >> _nrLoc;
+    system("cls");
+
+    _listaRanduri[_nrRand].ReturBilete( _returBani, _nrLoc, _returBani);
 }
 
 void SalaCinema::Afiseaza()
 {
     system("cls");
+    std::cout << "\t\t*** Ecran ***\n\n";
     for(unsigned int i = 0; i < _nrRanduri; ++i) {
         std::cout << "Rand " << i + 1 << ") ";
         _listaRanduri[i].Afiseaza();
-
     }
-
     system("pause");
     system("cls");
 }
