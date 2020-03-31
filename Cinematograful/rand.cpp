@@ -53,30 +53,26 @@ void Rand::ScaunOcupat(short _nrBilete, short _nrLoc)
 
 void Rand::ReturBilete(short _returBani, short _nrLoc, short _nrBilete)
 {
-    short _temp = 1;
     Bilete _pret;
 
     for(unsigned short i = 0; i < _nrBilete; ++i) {
         if(_listaScaune[_nrLoc].getScaun() == 1) {
-            _returBani = _temp * _pret.getIntreg();
-            _listaScaune[_nrLoc++].setScaun(0);
-            _temp++;
+            _returBani = _returBani + _pret.getIntreg();
+            _listaScaune[_nrLoc].setScaun(0);
         }
         else if (_listaScaune[_nrLoc].getScaun() == 2) {
-            _returBani = _temp * _pret.getIntreg3d();
-            _listaScaune[_nrLoc++].setScaun(0);
-            _temp++;
+            _returBani = _returBani + _pret.getIntreg3d();
+            _listaScaune[_nrLoc].setScaun(0);
         }
         else if (_listaScaune[_nrLoc].getScaun() == 3) {
-            _returBani = _temp * _pret.getRedus();
-            _listaScaune[_nrLoc++].setScaun(0);
-            _temp++;
+            _returBani = _returBani + _pret.getRedus();
+            _listaScaune[_nrLoc].setScaun(0);
         }
         else if (_listaScaune[_nrLoc].getScaun() == 4) {
-            _returBani = _temp * _pret.getRedus3d();
-            _listaScaune[_nrLoc++].setScaun(0);
-            _temp++;
+            _returBani = _returBani + _pret.getRedus3d();
+            _listaScaune[_nrLoc].setScaun(0);
         }
+        _nrLoc++;
     }
     std::cout << "Bani de returnat " << _returBani << std::endl;
     system("pause");

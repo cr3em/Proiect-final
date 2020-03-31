@@ -85,7 +85,7 @@ void SalaCinema::VindeBilete()
         std::cout << "Introduceti locul dorit: ";
         std::cin >> _selLoc;
 
-        _listaRanduri[selRand].ScaunOcupat(_nrBilete, _selLoc);
+        _listaRanduri[selRand-1].ScaunOcupat(_nrBilete, _selLoc-1);
 
         system("cls");
         std::cout << "Precizati categoria biletelor\n";
@@ -124,7 +124,7 @@ void SalaCinema::VindeBilete()
             break;
         }
         system("pause");
-        _listaRanduri[selRand].SelectScaun(_nrBilete, _selLoc, _optPret);
+        _listaRanduri[selRand-1].SelectScaun(_nrBilete, _selLoc-1, _optPret);
 
         opt = 0;
     }
@@ -151,7 +151,7 @@ void SalaCinema::ReturneazaBilete()
     std::cin >> _nrLoc;
     system("cls");
 
-    _listaRanduri[_nrRand].ReturBilete( _returBani, _nrLoc, _returBani);
+    _listaRanduri[_nrRand-1].ReturBilete( _returBani, _nrLoc-1, _nrBilete);
 }
 
 void SalaCinema::Afiseaza()
