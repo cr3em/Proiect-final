@@ -7,11 +7,11 @@ class Scaun
 public:
     Scaun();
     ~Scaun();
-    // getter
     unsigned short getScaun() {return _loc;}
-    // setter
     void setScaun(unsigned short _set);
-    void Afiseaza();
+
+    friend std::ostream& operator <<(std::ostream& out, Scaun& exporta);  // overload operators
+    friend std::istream& operator >>(std::istream& in, Scaun& importa);
 
 private:
     unsigned short _loc;

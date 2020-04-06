@@ -16,18 +16,22 @@ SalaCinema::~SalaCinema()
 
 void SalaCinema::Meniu()
 {
+    _salaCinema.Importa(_listaRanduri);
+    _bilet.Importa();
+
     system("cls");
     unsigned short opt = 1;
     while (opt != 0) {
         std::cout << "***Bine a-ti venit la cinematograf***\n";
-        std::cout << "***Alegeti din optiunile de mai jos:***\n\n";
+        std::cout << "**Alegeti din optiunile de mai jos:**\n\n";
         std::cout << "1. Vinde bilete\n";
         std::cout << "2. Returneaza bilete\n";
         std::cout << "3. Afiseaza situatie locuri libere\n";
         std::cout << "4. Modifica preturile\n";
+        std::cout << "5. Afiseaza preturile\n";
         std::cout << "0. Iesire\n";
         std::cin >> opt;
-        if(opt < 0 || opt > 4) {
+        if(opt < 0 || opt > 5) {
             std::cout << "Optiune incorecta, alegeti din nou\n";
             std::cin >> opt;
         }
@@ -37,6 +41,7 @@ void SalaCinema::Meniu()
             case 2: ReturneazaBilete(); break;
             case 3: Afiseaza(); break;
             case 4: _bilet.ModificaPret(); break;
+            case 5: AfiseazaPret(); break;
             case 0: Iesire(); break;
             }
     }
@@ -103,29 +108,30 @@ void SalaCinema::VindeBilete()
         case 1:
             system("CLS");
             _totalPlata = _nrBilete * _bilet.getIntreg();
-            std::cout << "Total de plata: " << _totalPlata << std::endl;
+            std::cout << "Total de plata: " << _totalPlata << " lei" << std::endl;
             break;
         case 2:
             system("CLS");
             _totalPlata = _nrBilete * _bilet.getIntreg3d();
-            std::cout << "Total de plata: " << _totalPlata << std::endl;
+            std::cout << "Total de plata: " << _totalPlata << " lei" << std::endl;
             break;
         case 3:
             system("CLS");
             _totalPlata = _nrBilete * _bilet.getRedus();
-            std::cout << "Total de plata: " << _totalPlata << std::endl;
+            std::cout << "Total de plata: " << _totalPlata << " lei" << std::endl;
             break;
         case 4:
             system("CLS");
             _totalPlata = _nrBilete * _bilet.getRedus3d();
-            std::cout << "Total de plata: " << _totalPlata << std::endl;
+            std::cout << "Total de plata: " << _totalPlata << " lei" << std::endl;
             break;
         case 0:
             break;
         }
         system("pause");
+        system("cls");
         _listaRanduri[selRand-1].SelectScaun(_nrBilete, _selLoc-1, _optPret);
-
+        _salaCinema.Exporta(_listaRanduri);
         opt = 0;
     }
 }
@@ -152,22 +158,50 @@ void SalaCinema::ReturneazaBilete()
     system("cls");
 
     _listaRanduri[_nrRand-1].ReturBilete( _returBani, _nrLoc-1, _nrBilete);
+
+    _salaCinema.Exporta(_listaRanduri);
 }
 
 void SalaCinema::Afiseaza()
 {
     system("cls");
+    std::ifstream _afiseazaSala;
+    _afiseazaSala.open("SalaCinema.txt");
+
     std::cout << "\t\t*** Ecran ***\n\n";
-    for(unsigned int i = 0; i < _nrRanduri; ++i) {
-        std::cout << "Rand " << i + 1 << ") ";
-        _listaRanduri[i].Afiseaza();
+    for(unsigned short i = 0; i < _listaRanduri.size(); ++i)
+    {
+        _afiseazaSala >> _listaRanduri[i];
+        std::cout  << "Rand " << i+1 << ") " << _listaRanduri[i];
     }
+    _afiseazaSala.close();
+
+    short _situatieLocuri = 0;
+    for(unsigned short i = 0; i < _listaRanduri.size(); ++i)
+    {
+        _listaRanduri[i].VerificaScaun(_situatieLocuri);
+    }
+    std::cout << std::endl;
+    std::cout << "Mai avem " << _situatieLocuri << " locuri libere\n\n";
+
     system("pause");
     system("cls");
 }
 
+void SalaCinema::AfiseazaPret()
+{
+    system("cls");
+    std::cout << "Pret intreg " << _bilet.getIntreg() << " lei" << std::endl;
+    std::cout << "Pret intreg 3D " << _bilet.getIntreg3d() << " lei" << std::endl;
+    std::cout << "Pret redus " << _bilet.getRedus() << " lei" << std::endl;
+    std::cout << "Pret redus 3D " << _bilet.getRedus3d() << " lei" << std::endl;
+    system("pause");
+    system("cls");
+}
 void SalaCinema::Iesire()
 {
-
+    system("cls");
+    std::ofstream _out("ListaPreturi.txt");
+    _bilet.Exporta(_out);
 }
 

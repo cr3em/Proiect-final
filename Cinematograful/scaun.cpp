@@ -12,7 +12,14 @@ void Scaun::setScaun(unsigned short _set)
     _loc = _set;
 }
 
-void Scaun::Afiseaza()
+std::ostream& operator <<(std::ostream& out, Scaun& exporta)
 {
-    std::cout << _loc << " ";
+    out << exporta._loc;
+    return out;
+}
+
+std::istream& operator >>(std::istream& in, Scaun& importa)
+{
+    in >> importa._loc;
+    return in;
 }

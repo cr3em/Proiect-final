@@ -31,10 +31,10 @@ void Bilete::ModificaPret() {
     system("cls");
     unsigned short opt = 1, _pretNou = 0;
     while(opt) {
-        std::cout << "1. Modificati pret intreg\n";
-        std::cout << "2. Modificati pret intreg cu ochelari 3D\n";
-        std::cout << "3. Modificati pret redus\n";
-        std::cout << "4. Modificati pret redus cu ochelari 3D\n";
+        std::cout << "1. Modificati pretul intreg\n";
+        std::cout << "2. Modificati pretul intreg cu ochelari 3D\n";
+        std::cout << "3. Modificati pretul redus\n";
+        std::cout << "4. Modificati pretul redus cu ochelari 3D\n";
         std::cout << "0. Revenire la meniul anterior\n";
         std::cin >> opt;
         while(opt < 0 || opt > 4) {
@@ -74,7 +74,25 @@ void Bilete::ModificaPret() {
             }
             system("cls");
             break;
-        case 0: system("cls"); break;
+        case 0: system("cls");
+            break;
         }
     }
+}
+
+void Bilete::Exporta(std::ostream& _export)
+{
+    _export << "Pret intreg: " << _pretIntreg << " lei\n";
+    _export << "Pret intreg 3D: " << _pretIntreg3d << " lei\n";
+    _export << "Pret redus: " << _pretRedus << " lei\n";
+    _export << "Pret redus 3D: " << _pretRedus3d << " lei\n";
+}
+
+void Bilete::Importa()
+{
+    _inFisier.open("ListaPreturi.txt");
+    _inFisier >> _pretIntreg;
+    _inFisier >> _pretIntreg3d;
+    _inFisier >> _pretRedus;
+    _inFisier >> _pretRedus3d;
 }
